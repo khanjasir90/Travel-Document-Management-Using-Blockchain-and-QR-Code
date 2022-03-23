@@ -30,7 +30,6 @@ mongoose.connect(
 
 const userRoute = require("./api/routes/auth");
 const uploadRoute = require("./api/routes/upload");
-const authDashboard = require("./api/routes/authDashboard");
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -38,7 +37,6 @@ app.use(express.json());
 
 app.use("/user", userRoute);
 app.use("/upload", uploadRoute);
-app.use("/dashboard", authDashboard);
 
 app.get("/test", async (req, res) => {
   const accounts = await web3.eth.getAccounts();

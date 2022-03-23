@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, "username -" + file.originalname);
+    cb(null, req.body.email + "-rc-" + file.originalname);
   },
 });
 
@@ -28,7 +30,39 @@ const upload = multer({
   fileFilter: fileFilter,
 });
 
-router.get("/", upload.single("image"), (req, res, next) => {
+router.post("/uploadrc", upload.single("image"), (req, res, next) => {
+  console.log(path.resolve("./" + req.file.path));
+  fs.rename(
+    "./uploads/" + req.file.filename,
+    "./uploads/" + req.body.email + "-rc.png",
+    () => {
+      console.log("renamed");
+    }
+  );
+  res.status(200).json({ message: "file uploaded" });
+});
+
+router.post("/uploadpuc", upload.single("image"), (req, res, next) => {
+  console.log(path.resolve("./" + req.file.path));
+  fs.rename(
+    "./uploads/" + req.file.filename,
+    "./uploads/" + req.body.email + "-puc.png",
+    () => {
+      console.log("renamed");
+    }
+  );
+  res.status(200).json({ message: "file uploaded" });
+});
+
+router.post("/uploadinsurance", upload.single("image"), (req, res, next) => {
+  console.log(path.resolve("./" + req.file.path));
+  fs.rename(
+    "./uploads/" + req.file.filename,
+    "./uploads/" + req.body.email + "-insurance.png",
+    () => {
+      console.log("renamed");
+    }
+  );
   res.status(200).json({ message: "file uploaded" });
 });
 
