@@ -63,7 +63,7 @@ const LoginScreen = () => {
                 <div className="formBx">
                     <h2>Login</h2>
                     {error && <div className="error-message" style={{ marginBottom: "5px" }}><Alert variant='danger'>{error}</Alert></div>}
-                    <form onSubmit={(e) => { LoginHandler(e) }}>
+                    <form onSubmit={(e) => {LoginHandler(e)}}>
                         <div className="inputBx">
                             <span>Email</span>
                             <input

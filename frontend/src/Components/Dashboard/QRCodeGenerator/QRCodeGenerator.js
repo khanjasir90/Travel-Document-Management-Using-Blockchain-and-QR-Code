@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-// import './QRCode.css';
+import './QRCodeGenerator.css';
 
 const QRCodeGenerator = () => {
     const [temp, setTemp] = useState("");
@@ -34,8 +34,9 @@ const QRCodeGenerator = () => {
             </button>
           </div> */}
         </div>
-        <div className="output-box">
-          <img src={qrCode} alt="" />
+        <div >
+          <img src={qrCode} alt="" className="dashboard_qrcode"/>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-2 qrcode_text">QR Code scanner</h2>
         </div>
       </div>)
 }
