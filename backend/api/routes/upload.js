@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null,  email+"-" + file.originalname);
+    cb(null, req.body.email + "-rc-" + file.originalname);
   },
 });
 
@@ -28,46 +30,40 @@ const upload = multer({
   fileFilter: fileFilter,
 });
 
-router.get("/rc/:email", upload.single("image1"), (req, res, next) => {
+router.post("/uploadrc", upload.single("image"), (req, res, next) => {
+  console.log(path.resolve("./" + req.file.path));
+  fs.rename(
+    "./uploads/" + req.file.filename,
+    "./uploads/" + req.body.email + "-rc.png",
+    () => {
+      console.log("renamed");
+    }
+  );
   res.status(200).json({ message: "file uploaded" });
 });
 
-const storage2 = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, req.params.email+"_" + file.originalname);
-  },
-});
-
-const upload2 = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 5,
-  },
-  fileFilter: fileFilter,
-});
-router.get("/puc", upload2.single("image"), (req, res, next) => {
+router.post("/uploadpuc", upload.single("image"), (req, res, next) => {
+  console.log(path.resolve("./" + req.file.path));
+  fs.rename(
+    "./uploads/" + req.file.filename,
+    "./uploads/" + req.body.email + "-puc.png",
+    () => {
+      console.log("renamed");
+    }
+  );
   res.status(200).json({ message: "file uploaded" });
 });
-const storage3 = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, email+"-" + file.originalname);
-  },
-});
 
-const upload3 = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 5,
-  },
-  fileFilter: fileFilter,
-});
-router.get("/insurance", upload3.single("image"), (req, res, next) => {
+router.post("/uploadinsurance", upload.single("image"), (req, res, next) => {
+  console.log(path.resolve("./" + req.file.path));
+  fs.rename(
+    "./uploads/" + req.file.filename,
+    "./uploads/" + req.body.email + "-insurance.png",
+    () => {
+      console.log("renamed");
+    }
+  );
   res.status(200).json({ message: "file uploaded" });
 });
+
 module.exports = router;

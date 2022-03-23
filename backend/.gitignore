@@ -1,1 +1,8 @@
 node_modules
+contracts
+build
+migrations
+test
+truffle-config.js
+config.js
+package-lock.json

@@ -8,7 +8,7 @@ const cors = require("cors");
 const Web3 = require("web3");
 //  const contract = require('@truffle/contract');
 const artifacts = require('./build/contracts/TravelDoc.json');
-const ipfsAPI = require('ipfs-api');
+//const ipfsAPI = require('ipfs-api');
 const fs = require('fs');
 const Contract  = new require('./Contract');
 const Provider = new require('./Provider');
@@ -16,7 +16,7 @@ const contract = new Contract();
 const provider = new Provider();
 const web3 = provider.web3;
 const instance = contract.initContract();
-const ipfs = ipfsAPI('ipfs.infura.io', '5001', {protocol: 'https'})
+//const ipfs = ipfsAPI('ipfs.infura.io', '5001', {protocol: 'https'})
 
 const userRoute = require("./api/routes/auth");
 const uploadRoute = require("./api/routes/upload");

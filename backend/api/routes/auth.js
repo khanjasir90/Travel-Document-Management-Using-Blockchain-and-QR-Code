@@ -17,6 +17,7 @@ router.post("/register", async (req, res) => {
   User.find({ email: req.body.email })
     .exec()
     .then((user) => {
+      
       if (user.length >= 1) {
         return res.status(409).json({
           message: "Mail exists",
