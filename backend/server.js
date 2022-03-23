@@ -18,18 +18,23 @@ const instance = contract.initContract();
 
 
 
-const userRoute = require("./api/routes/user");
+const userRoute = require("./api/routes/auth");
 const uploadRoute = require("./api/routes/upload");
+const authDashboard = require("./api/routes/authDashboard");
 
 const mongoose = require("mongoose");
 
-// mongoose.connect(
-//   "mongourl",
-//   {
-//     useUnifiedTopology: true,
-//     useNewUrlParser: true,
-//   }
-// );
+mongoose.connect(
+  process.env.DB_CONNECTION,
+  {
+    
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  },
+  ()=>{
+    console.log("connected to database");
+  }
+);
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -37,6 +42,7 @@ app.use(express.json());
 
 app.use("/user", userRoute);
 app.use("/upload", uploadRoute);
+app.use("/dashboard", authDashboard);
 
 app.get('/test',async(req,res)=> {
   const accounts = await web3.eth.getAccounts();
