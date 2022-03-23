@@ -3,6 +3,12 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
+const Contract = require("../../Contract");
+const Provider = require("../../Provider");
+const contract = new Contract();
+const provider = new Provider();
+const web3 = provider.web3;
+const instance = contract.initContract();
 
 const User = require("../models/user");
 
@@ -53,15 +59,21 @@ router.post("/register", async (req, res) => {
               _id: new mongoose.Types.ObjectId(),
               email: req.body.email,
               password: hash,
-              firstname: req.body.fname,
-              lastname: req.body.lname,
+              name: req.body.name,
               dob: req.body.dob,
               aadharcard: req.body.aadhar,
             });
             user
               .save()
-              .then((result) => {
+              .then(async (result) => {
                 console.log(result);
+                const accounts = await web3.eth.getAccounts();
+                console.log(accounts);
+                await instance.methods
+                  .registerUser(req.body.name, req.body.dob)
+                  .send({ from: accounts[0], gas: 300000 });
+                const response = await instance.methods.getId().call();
+                console.log(response);
                 res.status(201).json({
                   message: "User created",
                 });
