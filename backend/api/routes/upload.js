@@ -28,7 +28,7 @@ const upload = multer({
   fileFilter: fileFilter,
 });
 
-router.get("/rc", upload.single("image"), (req, res, next) => {
+router.get("/rc/:email", upload.single("image1"), (req, res, next) => {
   res.status(200).json({ message: "file uploaded" });
 });
 
@@ -37,7 +37,7 @@ const storage2 = multer.diskStorage({
     cb(null, "./uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, email+"-" + file.originalname);
+    cb(null, req.params.email+"_" + file.originalname);
   },
 });
 
