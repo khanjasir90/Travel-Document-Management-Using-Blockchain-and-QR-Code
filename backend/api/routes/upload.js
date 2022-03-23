@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
     cb(null, "./uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, "username -" + file.originalname);
+    cb(null,  email+"-" + file.originalname);
   },
 });
 
@@ -28,8 +28,46 @@ const upload = multer({
   fileFilter: fileFilter,
 });
 
-router.get("/", upload.single("image"), (req, res, next) => {
+router.get("/rc", upload.single("image"), (req, res, next) => {
   res.status(200).json({ message: "file uploaded" });
 });
 
+const storage2 = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, email+"-" + file.originalname);
+  },
+});
+
+const upload2 = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+  fileFilter: fileFilter,
+});
+router.get("/puc", upload2.single("image"), (req, res, next) => {
+  res.status(200).json({ message: "file uploaded" });
+});
+const storage3 = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, email+"-" + file.originalname);
+  },
+});
+
+const upload3 = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+  fileFilter: fileFilter,
+});
+router.get("/insurance", upload3.single("image"), (req, res, next) => {
+  res.status(200).json({ message: "file uploaded" });
+});
 module.exports = router;

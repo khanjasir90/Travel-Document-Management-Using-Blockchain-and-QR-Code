@@ -1,4 +1,4 @@
-//const User = require("../models/User");
+const User = require("../models/user.model.js");
 const verify = require("../middleware/authVerify");
 const router = require("express").Router();
 router.get("/allusers",verify,async(req,res)=>{
