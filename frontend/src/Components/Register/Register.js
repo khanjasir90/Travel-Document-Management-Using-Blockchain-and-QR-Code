@@ -1,6 +1,28 @@
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
 
 const Register = () => {
+    const [info, setInfo] = useState({
+        firstname:"",
+        lastname:"",
+        email:"",
+        aadhaarNumber:0,
+        phoneNumber:0,
+        dob:"",
+        password:""
+    });
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        if(info.aadhaarNumber.toString().length < 12){
+            return
+        }
+        if(info.phoneNumber.toString().length === 10){
+            return
+        }
+    }
+
     return (
         <div
             class="min-h-screen flex flex-col items-center justify-center bg-gray-100"
@@ -33,7 +55,7 @@ const Register = () => {
                             <label
                                 for="email"
                                 class="mb-1 text-xs tracking-wide text-gray-600"
-                            >Name:</label
+                            >Firstname:</label
                             >
                             <div class="relative">
                                 <div
@@ -52,10 +74,14 @@ const Register = () => {
                                     <i class="fas fa-user text-blue-500"></i>
                                 </div>
 
+                                
+
                                 <input
-                                    id="email"
-                                    type="email"
-                                    name="email"
+                                    id="firtname"
+                                    type="text"
+                                    name="firstname"
+                                    value={info.firstname}
+                                    onChange={(e) => {setInfo({...info, firstname: e.target.value})}}
                                     class="
                     text-sm
                     placeholder-gray-500
@@ -67,10 +93,108 @@ const Register = () => {
                     py-2
                     focus:outline-none focus:border-blue-400
                   "
-                                    placeholder="Enter your name"
+                                    placeholder="Enter your first name"
                                 />
                             </div>
                         </div>
+
+                        {/* lastname */}
+                        <div class="flex flex-col mb-5">
+                            <label
+                                for="email"
+                                class="mb-1 text-xs tracking-wide text-gray-600"
+                            >Lastname:</label
+                            >
+                            <div class="relative">
+                                <div
+                                    class="
+                    inline-flex
+                    items-center
+                    justify-center
+                    absolute
+                    left-0
+                    top-0
+                    h-full
+                    w-10
+                    text-gray-400
+                  "
+                                >
+                                    <i class="fas fa-user text-blue-500"></i>
+                                </div>
+
+                                
+
+                                <input
+                                    id="lastname"
+                                    type="text"
+                                    name="lastname"
+                                    value={info.lastname}
+                                    onChange={(e) => {setInfo({...info, lastname: e.target.value})}}
+                                    class="
+                    text-sm
+                    placeholder-gray-500
+                    pl-10
+                    pr-4
+                    rounded-2xl
+                    border border-gray-400
+                    w-full
+                    py-2
+                    focus:outline-none focus:border-blue-400
+                  "
+                                    placeholder="Enter your last name"
+                                />
+                            </div>
+                        </div>
+
+                                                {/* DOB */}
+                                                <div class="flex flex-col mb-5">
+                            <label
+                                for="email"
+                                class="mb-1 text-xs tracking-wide text-gray-600"
+                            >DOB:</label
+                            >
+                            <div class="relative">
+                                <div
+                                    class="
+                    inline-flex
+                    items-center
+                    justify-center
+                    absolute
+                    left-0
+                    top-0
+                    h-full
+                    w-10
+                    text-gray-400
+                  "
+                                >
+                                    <i class="fas fa-solid fa-calendar-check text-blue-500"></i>
+                                </div>
+
+                                
+
+                                <input
+                                    id="dob"
+                                    type="date"
+                                    name="dob"
+                                    value={info.dob}
+                                    onChange={(e) => {setInfo({...info, dob: e.target.value})}}
+                                    class="
+                    text-sm
+                    placeholder-gray-500
+                    pl-10
+                    pr-4
+                    rounded-2xl
+                    border border-gray-400
+                    w-full
+                    py-2
+                    focus:outline-none focus:border-blue-400
+                  "
+                                    placeholder="Enter your DOB"
+                                />
+                            </div>
+                        </div>
+                        {/* EMAIL */}
+
                         <div class="flex flex-col mb-5">
                             <label
                                 for="email"
@@ -98,6 +222,8 @@ const Register = () => {
                                     id="email"
                                     type="email"
                                     name="email"
+                                    value={info.email}
+                                    onChange={(e) => {setInfo({...info, email: e.target.value})}}
                                     class="
                     text-sm
                     placeholder-gray-500
@@ -113,6 +239,106 @@ const Register = () => {
                                 />
                             </div>
                         </div>
+
+
+
+                        {/* AADHAR NUMBER */}
+                        <div class="flex flex-col mb-5">
+                            <label
+                                for="email"
+                                class="mb-1 text-xs tracking-wide text-gray-600"
+                            >Aadhaar Number:</label
+                            >
+                            <div class="relative">
+                                <div
+                                    class="
+                    inline-flex
+                    items-center
+                    justify-center
+                    absolute
+                    left-0
+                    top-0
+                    h-full
+                    w-10
+                    text-gray-400
+                  "
+                                >
+                                    <i class="fas fa-user text-blue-500"></i><i class="fas fa-solid fa-arrow-down-1-9 text-blue-500"></i>
+                                </div>
+
+                                
+
+                                <input
+                                    id="addharNumber"
+                                    type="number"
+                                    name="addharNumber"
+                                    value={info.aadhaarNumber}
+                                    onChange={(e) => {setInfo({...info, aadhaarNumber: e.target.value})}}
+                                    class="
+                    text-sm
+                    placeholder-gray-500
+                    pl-10
+                    pr-4
+                    rounded-2xl
+                    border border-gray-400
+                    w-full
+                    py-2
+                    focus:outline-none focus:border-blue-400
+                  "
+                                    placeholder="Enter your aadhaar card number"
+                                />
+                            </div>
+                        </div>
+
+                        {/* PHONE NUMBER */}
+                        <div class="flex flex-col mb-5">
+                            <label
+                                for="email"
+                                class="mb-1 text-xs tracking-wide text-gray-600"
+                            >Phone Number:</label
+                            >
+                            <div class="relative">
+                                <div
+                                    class="
+                    inline-flex
+                    items-center
+                    justify-center
+                    absolute
+                    left-0
+                    top-0
+                    h-full
+                    w-10
+                    text-gray-400
+                  "
+                                >
+                                    <i class="fas fa-user text-blue-500"></i>
+                                </div>
+
+                                
+
+                                <input
+                                    id="phoneNumber"
+                                    type="number"
+                                    name="phoneNumber"
+                                    value={info.phoneNumber}
+                                    onChange={(e) => {setInfo({...info, phoneNumber: e.target.value})}}
+                                    class="
+                    text-sm
+                    placeholder-gray-500
+                    pl-10
+                    pr-4
+                    rounded-2xl
+                    border border-gray-400
+                    w-full
+                    py-2
+                    focus:outline-none focus:border-blue-400
+                  "
+                                    placeholder="Enter your phone number"
+                                />
+                            </div>
+                        </div>
+
+                        {/* PASSWORD */}
                         <div class="flex flex-col mb-6">
                             <label
                                 for="password"
@@ -142,6 +368,8 @@ const Register = () => {
                                     id="password"
                                     type="password"
                                     name="password"
+                                    value={info.password}
+                                    onChange={(e) => {setInfo({...info, password: e.target.value})}}
                                     class="
                     text-sm
                     placeholder-gray-500
@@ -202,7 +430,7 @@ const Register = () => {
             </div>
             <div class="flex justify-center items-center mt-6">
                 <a
-                    href="/"
+                    href="/login"
                     target="_blank"
                     class="
             inline-flex
@@ -215,7 +443,7 @@ const Register = () => {
                     <span class="ml-2"
                     >You have an account?
                         <a
-                            href="/"
+                            href="/login"
                             class="text-xs ml-2 text-blue-500 font-semibold"
                         >Login here</a
                         ></span
