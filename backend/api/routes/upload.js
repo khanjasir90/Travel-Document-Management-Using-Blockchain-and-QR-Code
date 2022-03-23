@@ -66,4 +66,28 @@ router.post("/uploadinsurance", upload.single("image"), (req, res, next) => {
   res.status(200).json({ message: "file uploaded" });
 });
 
+router.post("/uploadpuc", upload.single("image"), (req, res, next) => {
+  console.log(path.resolve("./" + req.file.path));
+  fs.rename(
+    "./uploads/" + req.file.filename,
+    "./uploads/" + req.body.email + "-puc.png",
+    () => {
+      console.log("renamed");
+    }
+  );
+  res.status(200).json({ message: "file uploaded" });
+});
+
+router.post("/uploadinsurance", upload.single("image"), (req, res, next) => {
+  console.log(path.resolve("./" + req.file.path));
+  fs.rename(
+    "./uploads/" + req.file.filename,
+    "./uploads/" + req.body.email + "-insurance.png",
+    () => {
+      console.log("renamed");
+    }
+  );
+  res.status(200).json({ message: "file uploaded" });
+});
+
 module.exports = router;

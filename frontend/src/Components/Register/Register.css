@@ -1,0 +1,29 @@
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.register_label{
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #607db8;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 1px
+}
+.register_input{
+    width: 100%;
+    padding: 10px 40px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid #607d8b;
+    letter-spacing: 1px;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+    margin-top:5px;
+}

@@ -1,77 +1,63 @@
-.sidebar__main {
-    min-width: 20%;
-    max-width: 20%;
-    min-height: 100vh;
-    background: #028090;
-  }
-  .on_small_screen{
-    display: none;
-  }
-  .sidebar__header {
-    padding: 5%;
-    color: #fff;
-  }
-  .sidebar__options,
-  .sidebar__link {
-    width: 100%;
-  }
-  .sidebar__button {
-    width: 100%;
-    padding: 5%;
-    cursor: pointer;
-    background: #028090;
-    border: none;
-    color: #fff;
-    justify-content: flex-start !important;
-    transition: all 0.3s ease-in;
-  }
-  .sidebar__button > h3 {
-    margin-left: 15px;
-  }
-  .sidebar__selected {
-    background: #fff;
-    color: #000;
-  }
-  .sidebar__selected img {
-    filter: invert(0) !important;
-  }
-  .sidebar__logo {
-    display: none;
-  }
-  @media screen and (max-width: 850px) {
-    .sidebar__button > h3 {
-      font-size: 12px;
-    }
-  }
-  @media screen and (max-width: 700px) {
-    .sidebar__button > h3 {
+.side__nav{
+  display: inline-block;
+  position: relative;
+  height: 100vh;
+  max-width: fit-content;
+  background-color: #f2f5f7;
+  color: #f2f5f7;
+  background-color: #1e4494;
+  justify-content: spa;
+  font-weight: 500;
+  line-height: 40px;
+  padding: 50px;
+  cursor: pointer;
+}
+
+.side_navigation_bar__link{
+  width: 100%;
+  padding: 0 12px;
+}
+
+.side__nav__small{
+  display: none;
+}
+
+.main{
+  display: flex;
+}
+
+.sub__main {
+  width: 50%;
+  padding: 50px;
+}
+
+.info{
+  display: flex;
+  justify-content: space-around;
+  height: fit-content;
+}
+
+.file__form{
+  height: 50%;
+  padding-top: 56px;
+  padding-left: 83px;
+}
+
+.save__btn{
+  text-align: center;
+}
+
+
+@media screen and (max-width:800px) {
+  .side__nav{
       display: none;
-    }
-    .on_small_screen{
-      display: block;
-      cursor:pointer;
-    }
-    .sidebar__header h1,
-    h2 {
-      display: none;
-    }
-    .sidebar__header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .sidebar__logo {
-      display: flex;
-      width: 25px;
-    }
-    .sidebar__main {
-      min-width: 10%;
-      max-width: 10%;
-      min-height: 100vh;
-      background: #028090;
-    }
-    .sidebar__button {
-      padding: 10px 10px;
-      justify-content: center !important;
-    }
   }
+
+  .side__nav__small{
+    display: inline-block;
+    color: #f2f5f7;
+    background-color: #1e4494;
+    width: fit-content;
+    height: 100vh;
+  }
+}
