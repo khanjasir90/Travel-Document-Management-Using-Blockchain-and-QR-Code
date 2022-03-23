@@ -4,23 +4,22 @@ const dotenv = require("dotenv");
 dotenv.config();
 const http = require("http");
 
-const userRoute = require("./api/routes/auth");
-const uploadRoute = require("./api/routes/upload");
-const authDashboard = require("./api/routes/authDashboard");
-
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  process.env.DB_CONNECTION,
+  process.env.DB_LOCAL,
   {
-    
     useUnifiedTopology: true,
     useNewUrlParser: true,
   },
-  ()=>{
+  () => {
     console.log("connected to database");
   }
 );
+
+const userRoute = require("./api/routes/auth");
+const uploadRoute = require("./api/routes/upload");
+const authDashboard = require("./api/routes/authDashboard");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
