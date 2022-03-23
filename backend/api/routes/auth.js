@@ -1,78 +1,134 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-//const User = require("../../models/User");
+const mongoose = require("mongoose");
+const nodemailer = require("nodemailer");
+const Contract = require('../../Contract');
+const Provider = require('../../Provider');
+const contract = new Contract();
+const provider = new Provider();
+const web3 = provider.web3;
+const instance = contract.initContract();
 
 
+const User = require("../models/user");
 
-const Joi=require('@hapi/joi');
-const e = require("express");
+router.post("/register", async (req, res) => {
+  User.find({ email: req.body.email })
+    .exec()
+    .then((user) => {
+      if (user.length >= 1) {
+        return res.status(409).json({
+          message: "Mail exists",
+        });
+      } else {
+        const password = Math.round(
+          Math.pow(36, 6 + 1) - Math.random() * Math.pow(36, 6)
+        )
+          .toString(36)
+          .slice(1);
 
-const registerSchema = Joi.object({
-    fname: Joi.string().min(3).max(30).required(),
-    lname: Joi.string().min(3).max(30).required(),
-    email: Joi.string().min(3).max(30).required().email(),
-    password: Joi.string().min(3).max(30).required(),
-})
-const loginSchema=Joi.object({
-    email: Joi.string().min(3).max(30).required().email(),
-    password: Joi.string().min(3).max(30).required(),
-})
-//Signup User
-router.post("/register",async (req, res) => {
-    const emailExist = await User.findOne({ email: req.body.email });
-    // If mail exist then return
-    if (emailExist) {
-        res.status.send("Email already exist");
-        return;
-    }
+        const transporter = nodemailer.createTransport({
+          port: 465, // true for 465, false for other ports
+          host: "smtp.gmail.com",
+          auth: {
+            user: "sihvenom23@gmail.com",
+            pass: "venom@123",
+          },
+          secure: true,
+        });
+        const mailData = {
+          from: "sihvenom23@gmail.com", // sender address
+          to: req.body.email, // list of receivers
+          subject: "Password for your account",
+          text: password,
+        };
+        transporter.sendMail(mailData, function (err, info) {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({ error: err });
+          } else console.log(info);
+        });
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-    const user = new User({
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        password: hashedPassword,
+        bcrypt.hash(password, 10, (err, hash) => {
+          if (err) {
+            return res.status(500).json({
+              error: err,
+            });
+          } else {
+            const user = new User({
+              _id: new mongoose.Types.ObjectId(),
+              email: req.body.email,
+              password: hash,
+              name: req.body.name,
+              dob: req.body.dob,
+              aadharcard: req.body.aadhar,
+            });
+            user
+              .save()
+              .then(async(result) => {
+                console.log(result);
+                const accounts = await web3.eth.getAccounts();
+                await instance.methods.registerUser(req.body.name,req.body.dob).send({from:accounts[0],gas:300000});
+                const response = await instance.methods.getId().call();
+                console.log(response);
+                res.status(201).json({
+                  message: "User created",
+                });
+              })
+              .catch((err) => {
+                console.log(err);
+                res.status(500).json({
+                  error: err,
+                });
+              });
+          }
+        });
+      }
     });
-    try{
-        const {error}=registerSchema.validate(req.body);
-        if(error){
-            res.status(400).send(error.details[0].message);
-            return;
-        }
-        else{
-            const savedUser = await user.save();
-            res.status(200).send("user created");
-        }
-    }catch(error){
-            res.status(500).send(error);
-        }
-}); 
+});
 
-router.post("/login", async (req, res) => {
-    const user = await User.findOne({ email: req.body.email });
-    if (!user) {
-        return res.status(400).json({error:"Incorrect Email-Id"});
-    }
-    const validPassword = await bcrypt.compare(req.body.password, user.password);
-
-    if (!validPassword) {
-        return res.status(400).json({error:"Incorrect password"});
-    }
-    try{
-        const {error} = await loginSchema.validateAsync(req.body);
-        if(error) return res.status(400).json({error:error.details[0].message});
-        else{
-            const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-            res.header("auth-token", token).send(token);
-            res.status(200).json({
-                "success": true,
-            })
+router.post("/login", (req, res, next) => {
+  User.find({ email: req.body.email })
+    .exec()
+    .then((user) => {
+      if (user.length < 1) {
+        return res.status(401).json({
+          message: "Auth failed",
+        });
+      }
+      bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+        if (err) {
+          return res.status(401).json({
+            message: "Auth failed",
+          });
         }
-    }catch(error){
-        res.status(500).json({error:error});
-    }
+        if (result) {
+          const token = jwt.sign(
+            {
+              email: user[0].email,
+              userId: user[0]._id,
+            },
+            process.env.TOKEN_SECRET,
+            {
+              expiresIn: "1h",
+            }
+          );
+          return res.status(200).json({
+            message: "Auth successful",
+            token: token,
+          });
+        }
+        res.status(401).json({
+          message: "Auth failed",
+        });
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+      });
+    });
 });
 module.exports = router;

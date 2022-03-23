@@ -4,8 +4,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 const http = require("http");
 //web3 integration
-const cors = require('cors');
-const Web3 = require('web3');
+const cors = require("cors");
+const Web3 = require("web3");
 //  const contract = require('@truffle/contract');
 const artifacts = require('./build/contracts/TravelDoc.json');
 const ipfsAPI = require('ipfs-api');
@@ -25,12 +25,12 @@ const authDashboard = require("./api/routes/authDashboard");
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  process.env.DB_CONNECTION,
+  process.env.DB_LOCAL,
   {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   },
-  ()=>{
+  () => {
     console.log("connected to database");
   }
 );
@@ -47,7 +47,7 @@ app.use("/user", userRoute);
 app.use("/upload", uploadRoute);
 app.use("/dashboard", authDashboard);
 
-app.get('/test',async(req,res)=> {
+app.get("/test", async (req, res) => {
   const accounts = await web3.eth.getAccounts();
   //console.log(accounts);
   // const result = await instance.methods.testcontract().call();
