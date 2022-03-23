@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import SideNavigationBar from './SideNavigationBar';
+import { Button } from 'react-bootstrap';
+import './Dashboard.css';
+import QRCodeGenerator from './QRCodeGenerator';
+import { Container, Form, Row, Col } from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
-import * as FaIcons from 'react-icons/fa';
 
 import "./Dashboard.css";
 
@@ -20,32 +24,52 @@ const Sidebar = () => {
     setSidebar(!sidebar)
 }
   return (
-    <div className="sidebar__main">
-    
-      <div className="sidebar__header">
-        <h1>Hello NAME 👋</h1>
-        <div className={sidebar ? 'on_small_screen' : '' }>
-            <FaIcons.FaBars onClick={showsidebar}/>
-        </div>
-      </div>
-      <div className="sidebar__options flex__center flex__flow__down">
-        
-        <button
-            className="sidebar__button flex__center"
-        >
-            <i className="bi bi-bag-fill" style={{ fontSize: "25px" }}></i>
-            <h3>Account ID</h3>
-        </button>
-        
-        <button
-          className="sidebar__button flex__center"
-          onClick={() => handleLogout()}
-        >
-          <i className="bi bi-box-arrow-left" style={{ fontSize: "25px" }}></i>
-          <h3>Log Out</h3>
-        </button>
-      </div>
+    <div className='main'>
+    <SideNavigationBar />
+    <div className='sub__main'>
+        <Container className='info'>
+            <QRCodeGenerator />
+            <div className='details'>
+                <p>Nikshita Shetty</p>
+                <p>DOB</p>
+                <p>1234 5678 7890</p>
+            </div>
+        </Container>
+        <Form className="file__form">
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                <Form.Label column sm="2">
+                    Insurance
+                </Form.Label>
+                <Col sm="10">
+                    <Form.Control type="file" placeholder="Password" />
+                </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                <Form.Label column sm="2">
+                    PUC
+                </Form.Label>
+                <Col sm="10">
+                    <Form.Control type="file" placeholder="Password" />
+                </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                <Form.Label column sm="2">
+                    Registeration Certificate
+                </Form.Label>
+                <Col sm="10">
+                    <Form.Control type="file" placeholder="Password" />
+                </Col>
+            </Form.Group>
+            <div className='save__btn'>
+                <Button>Save</Button>
+            </div>
+
+        </Form>
     </div>
+
+</div>
   );
 };
 
