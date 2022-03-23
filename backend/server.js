@@ -3,11 +3,14 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 const http = require("http");
+
 //web3 integration
 const cors = require("cors");
 const Web3 = require("web3");
+
 //  const contract = require('@truffle/contract');
 const artifacts = require("./build/contracts/TravelDoc.json");
+
 // const ipfsAPI = require("ipfs-api");
 const fs = require("fs");
 const Contract = new require("./Contract");
