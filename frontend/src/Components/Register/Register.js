@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 import './Register.css';
 import LoginImg from "../../assets/images/login.svg";
-// import Login from "./login.jpg";
-// import { axiosInstance } from '../../AxiosInstance';
+import Login from "./login.jpg";
+import { axiosInstance } from '../../AxiosInstance';
 
 const RegisterScreen = ({ history }) => {
   const [email, setEmail] = useState('');
@@ -19,16 +19,16 @@ const RegisterScreen = ({ history }) => {
     password: '',
   });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    if (info.aadhaarNumber.toString().length < 12) {
-      return;
-    }
-    if (info.phoneNumber.toString().length === 10) {
-      return;
-    }
-  };
+  //   if (info.aadhaarNumber.toString().length < 12) {
+  //     return;
+  //   }
+  //   if (info.phoneNumber.toString().length === 10) {
+  //     return;
+  //   }
+  // };
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
@@ -36,30 +36,30 @@ const RegisterScreen = ({ history }) => {
     }
   }, [history]);
 
-  // const LoginHandler = async (e) => {
-  //     e.preventDefault();
+  const RegisterHandler = async (e) => {
+      e.preventDefault();
 
-  //     const config = {
-  //         header: {
-  //             "Content-Type": "application/json"
-  //         }
-  //     }
+      const config = {
+          header: {
+              "Content-Type": "application/json"
+          }
+      }
 
-  //     try {
-  //         const {data} = await axiosInstance.post("/api/auth/login", { email, password}, config);
-  //         console.log(data)
-  //         localStorage.setItem("id", data.id);
-  //         localStorage.setItem("authToken", data.token);
+      try {
+          const {data} = await axiosInstance.post("/api/auth/login", { email, password}, config);
+          console.log(data)
+          localStorage.setItem("id", data.id);
+          localStorage.setItem("authToken", data.token);
 
-  //         history.push("/")
+          history.push("/")
 
-  //     } catch (error) {
-  //         setError(`Email or password is incorrect`)
-  //         setTimeout(() => {
-  //             setError("")
-  //         }, 7000);
-  //     }
-  // }
+      } catch (error) {
+          setError(`Email or password is incorrect`)
+          setTimeout(() => {
+              setError("")
+          }, 7000);
+      }
+  }
 
   return (
     <div className='login-screen'>
@@ -74,7 +74,7 @@ const RegisterScreen = ({ history }) => {
               <Alert variant='danger'>{error}</Alert>
             </div>
           )}
-          <form>
+          <form onSubmit={(e) => RegisterHandler(e)}>
             <div class='mt-10'>
               <form action='#'>
                 <div class='flex flex-col mb-5'>
