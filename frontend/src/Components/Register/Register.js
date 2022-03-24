@@ -70,7 +70,7 @@ const RegisterScreen = () => {
       console.log(json);
       localStorage.setItem("authToken", json.token);
       localStorage.setItem("email", info.email);
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       setError(`Email or password is incorrect`)
       setTimeout(() => {
