@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SideNavigationBar from './SideNavigationBar';
 import './Dashboard.css';
 import QRCodeGenerator from './QRCodeGenerator/QRCodeGenerator';
@@ -16,6 +16,22 @@ const Sidebar = () => {
   const [pucFile, setPucFile] = useState({});
   const [registrationFile, setRegistrationFile] = useState({});
   const [qrLink, setqrLink] = useState("");
+  const [info, setInfo] = useState({});
+
+  const getUserResponse = async () => {
+    let response = await fetch(`http://localhost:5000/dashboard/${localStorage.getItem("email")}`, {
+      method:"GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    console.log(response);
+    setInfo({...response});
+  }
+
+  useEffect(() => {
+    getUserResponse()
+  });
 
   const insuranceHandler = async () => {
     const data = new FormData();
@@ -92,6 +108,7 @@ const Sidebar = () => {
         }
       });
       console.log(response);
+      setqrLink(response);
 
     } catch (error) {
       setError(`There was some error !! Please try again`)
@@ -157,7 +174,7 @@ const Sidebar = () => {
                         <Col sm='10'>
                           <Form.Control type='file' name="insuranceFile" onChange={(e) => { setInsuranceFile(e.target.files[0]) }} />
                         </Col>
-                        <span class="upload_plus_button shadow-md">+</span>
+                        <span onClick={insuranceHandler} class="upload_plus_button shadow-md">+</span>
                       </Form.Group>
                     </div>
                   </div>
@@ -171,7 +188,7 @@ const Sidebar = () => {
                         <Col sm='10'>
                           <Form.Control type='file' name="pucFile" onChange={(e) => { setPucFile(e.target.files[0]) }} />
                         </Col>
-                        <span class="upload_plus_button shadow-md">+</span>
+                        <span onClick={pucHandler} class="upload_plus_button shadow-md">+</span>
                       </Form.Group>
                     </div>
                   </div>
@@ -187,7 +204,7 @@ const Sidebar = () => {
                         <Col sm='10'>
                           <Form.Control type='file' name="registrationFile" onChange={(e) => { setRegistrationFile(e.target.files[0]) }} />
                         </Col>
-                        <span class="upload_plus_button shadow-md">+</span>
+                        <span onClick={registrationHandler} class="upload_plus_button shadow-md">+</span>
                       </Form.Group>
                     </div>
                   </div>
