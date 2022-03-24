@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import SideNavigationBar from './SideNavigationBar';
 import './Dashboard.css';
 import QRCodeGenerator from './QRCodeGenerator/QRCodeGenerator';
