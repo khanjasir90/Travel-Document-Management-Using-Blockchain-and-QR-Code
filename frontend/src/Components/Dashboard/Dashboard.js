@@ -68,6 +68,7 @@ const Sidebar = () => {
                         <Col sm='10'>
                           <Form.Control type='file' placeholder='Password' />
                         </Col>
+                        <span class="upload_plus_button shadow-md">+</span>
                       </Form.Group>
                     </div>
                   </div>
@@ -81,6 +82,7 @@ const Sidebar = () => {
                         <Col sm='10'>
                           <Form.Control type='file' placeholder='Password' />
                         </Col>
+                        <span class="upload_plus_button shadow-md">+</span>
                       </Form.Group>
                     </div>
                   </div>
@@ -96,6 +98,7 @@ const Sidebar = () => {
                         <Col sm='10'>
                           <Form.Control type='file' placeholder='Password' />
                         </Col>
+                        <span class="upload_plus_button shadow-md">+</span>
                       </Form.Group>
                     </div>
                   </div>
@@ -103,7 +106,7 @@ const Sidebar = () => {
               </div>
             </section>
             <div class="p-2 w-full">
-              <button class="flex mx-auto mt-10 text-white border-0 py-2 px-8 focus:outline-none rounded text-lg dashborad_activate_btn">Activate</button>
+              <button class="flex mx-auto mt-10 text-white border-0 py-2 px-8 focus:outline-none text-lg dashborad_activate_btn">Activate</button>
             </div>
           </Form>
         </div>

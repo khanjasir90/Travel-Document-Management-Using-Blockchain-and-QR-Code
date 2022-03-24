@@ -101,12 +101,13 @@ router.post("/uploadrc", upload.single("image"), async (req, res, next) => {
           }
         }
       });
-      res.status(200).json({ message: "file uploaded" });
-      // return res.status(200).json({ "rc-details": j });
+      // res.status(200).json({ message: "file uploaded" });
+      return res.status(200).json(j);
     })
     .catch((err) => {
       console.log(err);
       return res.status(500).json({ error: err });
+
     });
 
   // res.status(200).json({ message: "file uploaded" });
@@ -142,11 +143,12 @@ router.post("/uploadpuc", upload.single("image"), (req, res, next) => {
       }
       console.log(j);
       // return res.status(200).json({ "puc-details": j });
-      res.status(200).json({ message: "file uploaded" });
+      return res.status(200).json({ message: "file uploaded" });
     })
     .catch((err) => {
       console.log(err);
-      return res.status(500).json({ error: err });
+      res.status(200).json(j)
+      // return res.status(500).json({ error: err });
     });
 });
 
@@ -179,9 +181,10 @@ router.post("/uploadinsurance", upload.single("image"), (req, res, next) => {
         j[a[i][0]] = a[i][1];
       }
       console.log(j);
-      res.status(200).json({ message: "file uploaded" });
+      
+      // res.status(200).json({ message: "file uploaded" });
 
-      // return res.status(200).json({ "insurance-details": j });
+      return res.status(200).json(j);
     })
     .catch((err) => {
       console.log(err);

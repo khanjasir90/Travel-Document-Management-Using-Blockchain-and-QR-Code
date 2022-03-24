@@ -57,11 +57,29 @@
 }
 .upload_text{
   font-size: 25px;
+  color:#333;
 }
 .dashborad_activate_btn{
 background-color: #1D3557;
+border-radius: 8px;
 }
 .dashborad_activate_btn:hover{
+  background-color: #1b2a41;
+}
+.upload_plus_button {
+  height: 50px;
+  width: 50px;
+  background-color: #1D3557;
+  border-radius: 50%;
+  display: inline-block;
+  padding:8px 15px;
+  font-size:25px;
+  font-weight:bold;
+  color:#fff;
+  cursor: pointer;
+  margin:10px 0 20px 0;
+}
+.upload_plus_button:hover{
   background-color: #1b2a41;
 }
 @media screen and (max-width:800px) {
