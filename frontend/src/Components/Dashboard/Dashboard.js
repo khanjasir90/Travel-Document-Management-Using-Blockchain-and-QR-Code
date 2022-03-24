@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import SideNavigationBar from './SideNavigationBar';
 import './Dashboard.css';
 import QRCodeGenerator from './QRCodeGenerator/QRCodeGenerator';
-import { Container, Button, Form, Row, Col } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import {Form, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 import './Dashboard.css';
 
@@ -152,7 +152,7 @@ const Sidebar = () => {
                     Email ID: khushbu@xyz.com
                   </h2>
                   <h2 class='text-lg text-gray-900 font-medium title-font mb-5 '>
-                    Phone Number: 1234567890
+                    Phone Number: 9864723990
                   </h2>
                 </div>
               </div>
