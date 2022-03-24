@@ -11,10 +11,96 @@ const Sidebar = () => {
   //   const [select, setSelect] = useState(1);
   //   const user_data = useSelector((store) => store.auth);
   const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem('userData');
-    navigate('/');
-  };
+  const [error, setError] = useState('');
+  const [insurancefile, setInsuranceFile] = useState({});
+  const [pucFile, setPucFile] = useState({});
+  const [registrationFile, setRegistrationFile] = useState({});
+
+  const insuranceHandler = async () => {
+    const data = new FormData();
+    data.append("image", insurancefile);
+
+    try {
+      let response = await fetch("http://localhost:5000/upload/uploadinsurance", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      
+    } catch (error) {
+      setError(`There was some error !! Please try again`)
+      setTimeout(() => {
+        setError("");
+      }, 7000);
+      console.log(error)
+    }
+  }
+
+  const pucHandler = async () => {
+    const data = new FormData();
+    data.append("image", pucFile);
+
+    try {
+      let response = await fetch("http://localhost:5000/upload/uploadpuc", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      
+    } catch (error) {
+      setError(`There was some error !! Please try again`)
+      setTimeout(() => {
+        setError("");
+      }, 7000);
+      console.log(error)
+    }
+  }
+
+  const registrationHandler = async () => {
+    const data = new FormData();
+    data.append("image", registrationFile);
+
+    try {
+      let response = await fetch("http://localhost:5000/upload/uploadrc", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      
+    } catch (error) {
+      setError(`There was some error !! Please try again`)
+      setTimeout(() => {
+        setError("");
+      }, 7000);
+      console.log(error)
+    }
+  }
+
+  const activateHandler = async () => {
+    try {
+      let response = await fetch("http://localhost:5000", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      
+    } catch (error) {
+      setError(`There was some error !! Please try again`)
+      setTimeout(() => {
+        setError("");
+      }, 7000);
+      console.log(error)
+    }
+  }
+
+  
 
   return (
     <>
@@ -66,7 +152,7 @@ const Sidebar = () => {
                           Insurance
                         </Form.Label>
                         <Col sm='10'>
-                          <Form.Control type='file' placeholder='Password' />
+                          <Form.Control type='file' name="insuranceFile" onChange={(e) => { setInsuranceFile(e.target.files[0]) }} />
                         </Col>
                       </Form.Group>
                     </div>
@@ -79,7 +165,7 @@ const Sidebar = () => {
                       >
                         <Form.Label className='upload_text'>PUC</Form.Label>
                         <Col sm='10'>
-                          <Form.Control type='file' placeholder='Password' />
+                          <Form.Control type='file' name="pucFile" onChange={(e) => { setPucFile(e.target.files[0]) }} />
                         </Col>
                       </Form.Group>
                     </div>
@@ -94,7 +180,7 @@ const Sidebar = () => {
                           Registeration Certificate
                         </Form.Label>
                         <Col sm='10'>
-                          <Form.Control type='file' placeholder='Password' />
+                          <Form.Control type='file' name="registrationFile" onChange={(e) => { setRegistrationFile(e.target.files[0]) }} />
                         </Col>
                       </Form.Group>
                     </div>

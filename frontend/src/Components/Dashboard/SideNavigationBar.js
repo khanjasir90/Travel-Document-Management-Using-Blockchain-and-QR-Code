@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 // import { Fabars } from "react-icons/fa";
 
 const SideNavigationBar = () => {
@@ -12,6 +13,12 @@ const SideNavigationBar = () => {
     const openNav = () => {
         setCustomWidth(true)
     }
+
+    const navigate = useNavigate();
+    const handleLogout = () => {
+      localStorage.removeItem('userData');
+      navigate('/');
+    };
     return (
         <>
             <div className='side__nav'>
@@ -26,7 +33,7 @@ const SideNavigationBar = () => {
                 <Container>
                     <p className='side_navigation_bar__link'>Hello NAME</p>
                     <p className='side_navigation_bar__link'>Account ID</p>
-                    <p className='side_navigation_bar__link'>Logout</p>
+                    <p className='side_navigation_bar__link' onClick={handleLogout}>Logout</p>
                 </Container>
             </div>}
             {!customWidth && <div className='side__nav__small'>
