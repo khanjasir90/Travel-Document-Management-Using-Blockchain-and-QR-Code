@@ -11,10 +11,98 @@ const Sidebar = () => {
   //   const [select, setSelect] = useState(1);
   //   const user_data = useSelector((store) => store.auth);
   const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem('userData');
-    navigate('/');
-  };
+  const [error, setError] = useState('');
+  const [insurancefile, setInsuranceFile] = useState({});
+  const [pucFile, setPucFile] = useState({});
+  const [registrationFile, setRegistrationFile] = useState({});
+  const [qrLink, setqrLink] = useState("");
+
+  const insuranceHandler = async () => {
+    const data = new FormData();
+    data.append("image", insurancefile);
+
+    try {
+      let response = await fetch("http://localhost:5000/upload/uploadinsurance", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      
+    } catch (error) {
+      setError(`There was some error !! Please try again`)
+      setTimeout(() => {
+        setError("");
+      }, 7000);
+      console.log(error)
+    }
+  }
+
+  const pucHandler = async () => {
+    const data = new FormData();
+    data.append("image", pucFile);
+
+    try {
+      let response = await fetch("http://localhost:5000/upload/uploadpuc", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      
+    } catch (error) {
+      setError(`There was some error !! Please try again`)
+      setTimeout(() => {
+        setError("");
+      }, 7000);
+      console.log(error)
+    }
+  }
+
+  const registrationHandler = async () => {
+    const data = new FormData();
+    data.append("image", registrationFile);
+
+    try {
+      let response = await fetch("http://localhost:5000/upload/uploadrc", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      
+    } catch (error) {
+      setError(`There was some error !! Please try again`)
+      setTimeout(() => {
+        setError("");
+      }, 7000);
+      console.log(error)
+    }
+  }
+
+  const activateHandler = async (e) => {
+    try {
+      let response = await fetch("http://localhost:5000/activate", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      console.log(response);
+
+    } catch (error) {
+      setError(`There was some error !! Please try again`)
+      setTimeout(() => {
+        setError("");
+      }, 7000);
+      console.log(error)
+    }
+  }
+
+  
 
   return (
     <>
@@ -26,6 +114,7 @@ const Sidebar = () => {
             <div className='col section_one'>
               <div class='p-4'>
                 <div class='border border-gray-100 p-6 rounded-lg shadow-md bg-white'>
+                  {qrLink && <QRCodeGenerator link={qrLink}/>}
                   <QRCodeGenerator />
                 </div>
               </div>
@@ -66,7 +155,7 @@ const Sidebar = () => {
                           Insurance
                         </Form.Label>
                         <Col sm='10'>
-                          <Form.Control type='file' placeholder='Password' />
+                          <Form.Control type='file' name="insuranceFile" onChange={(e) => { setInsuranceFile(e.target.files[0]) }} />
                         </Col>
                         <span class="upload_plus_button shadow-md">+</span>
                       </Form.Group>
@@ -80,7 +169,7 @@ const Sidebar = () => {
                       >
                         <Form.Label className='upload_text'>PUC</Form.Label>
                         <Col sm='10'>
-                          <Form.Control type='file' placeholder='Password' />
+                          <Form.Control type='file' name="pucFile" onChange={(e) => { setPucFile(e.target.files[0]) }} />
                         </Col>
                         <span class="upload_plus_button shadow-md">+</span>
                       </Form.Group>
@@ -93,10 +182,10 @@ const Sidebar = () => {
                         controlId='formPlaintextPassword'
                       >
                         <Form.Label className='upload_text'>
-                          Registeration Certificate
+                          Registration Certificate
                         </Form.Label>
                         <Col sm='10'>
-                          <Form.Control type='file' placeholder='Password' />
+                          <Form.Control type='file' name="registrationFile" onChange={(e) => { setRegistrationFile(e.target.files[0]) }} />
                         </Col>
                         <span class="upload_plus_button shadow-md">+</span>
                       </Form.Group>
@@ -106,7 +195,7 @@ const Sidebar = () => {
               </div>
             </section>
             <div class="p-2 w-full">
-              <button class="flex mx-auto mt-10 text-white border-0 py-2 px-8 focus:outline-none text-lg dashborad_activate_btn">Activate</button>
+              <button onClick={activateHandler} class="flex mx-auto mt-10 text-white border-0 py-2 px-8 focus:outline-none text-lg dashborad_activate_btn">Activate</button>
             </div>
           </Form>
         </div>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './QRCodeGenerator.css';
 
-const QRCodeGenerator = () => {
+const QRCodeGenerator = ({link}) => {
     const [temp, setTemp] = useState("");
     const [word, setWord] = useState("");
     const [size, setSize] = useState(150);
@@ -11,8 +11,11 @@ const QRCodeGenerator = () => {
     // Changing the URL only when the user
     // changes the input
     useEffect(() => {
-      setQrCode
-   (`http://api.qrserver.com/v1/create-qr-code/?data=${word}!&size=${size}x${size}&bgcolor=${bgColor}`);
+      if(link){
+        setQrCode(`http://api.qrserver.com/v1/create-qr-code/?data=${link}!&size=${size}x${size}&bgcolor=${bgColor}`);
+      }else{
+        setQrCode(`http://api.qrserver.com/v1/create-qr-code/?data=${word}!&size=${size}x${size}&bgcolor=${bgColor}`);
+      }
     }, [word, size, bgColor]);
     
     // Updating the input word when user
