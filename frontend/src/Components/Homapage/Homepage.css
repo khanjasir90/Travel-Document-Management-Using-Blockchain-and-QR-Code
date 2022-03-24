@@ -17,3 +17,13 @@
     bottom: 0;
     width: 100%;
 }
+.homepage_background{
+    background-image:url("../../assets/images/home1.jpg");
+    width:100vw;
+    height:100vh;
+}
+.landing_page{
+    background-color: #EFFAEE;
+    width:100vw;
+    left:-50px;
+}
