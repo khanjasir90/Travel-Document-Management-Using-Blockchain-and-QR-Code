@@ -141,6 +141,30 @@ router.post("/uploadpuc", upload.single("image"), (req, res, next) => {
         j[a[i][0]] = a[i][1];
       }
       console.log(j);
+      const testFile = fs.readFileSync(
+        "./uploads/" + req.body.email + "-puc.png"
+      );
+      let testBuffer = new Buffer(testFile);
+      ipfs.files.add(testBuffer, async (err, file) => {
+        if (err) console.log(err);
+        else {
+          const accounts = await web3.eth.getAccounts();
+          console.log(accounts[0]);
+          try {
+            await instance.methods
+              .add_puc(file[0].hash, req.body.email, j.Validity)
+              .send({ from: accounts[0], gas: 300000 });
+            const response = await instance.methods.getId().call();
+            console.log(response);
+            const result1 = await instance.methods
+              .get_puc_details(response)
+              .call();
+            console.log(result1);
+          } catch (err) {
+            console.log(err);
+          }
+        }
+      });
       // return res.status(200).json({ "puc-details": j });
       res.status(200).json({ message: "file uploaded" });
     })
@@ -179,6 +203,30 @@ router.post("/uploadinsurance", upload.single("image"), (req, res, next) => {
         j[a[i][0]] = a[i][1];
       }
       console.log(j);
+      const testFile = fs.readFileSync(
+        "./uploads/" + req.body.email + "-insurance.png"
+      );
+      let testBuffer = new Buffer(testFile);
+      ipfs.files.add(testBuffer, async (err, file) => {
+        if (err) console.log(err);
+        else {
+          const accounts = await web3.eth.getAccounts();
+          console.log(accounts[0]);
+          try {
+            await instance.methods
+              .add_insurance(file[0].hash, req.body.email, j.Validity)
+              .send({ from: accounts[0], gas: 300000 });
+            const response = await instance.methods.getId().call();
+            console.log(response);
+            const result1 = await instance.methods
+              .get_insurance_details(response)
+              .call();
+            console.log(result1);
+          } catch (err) {
+            console.log(err);
+          }
+        }
+      });
       res.status(200).json({ message: "file uploaded" });
 
       // return res.status(200).json({ "insurance-details": j });
