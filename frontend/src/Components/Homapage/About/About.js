@@ -1,10 +1,5 @@
 import React from 'react';
 import './About.css';
-// import ShubhNisar from "../../..";
-// import HershVitekar from "../../../src/assets/images/HershVitekar.jpg";
-// import KhushbuParmar from "../../../src/assets/images/KhushbuParmar.jpg";
-// import BhagavatirajYadav from "../../../src/assets/images/BhagavatirajYadav.jpg";
-// import RishabhPatil from "../../../src/assets/images/RishabhPatil.jpg";
 
 const Team = () => {
     return (

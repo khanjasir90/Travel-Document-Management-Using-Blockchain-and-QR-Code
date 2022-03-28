@@ -81,7 +81,7 @@ router.post("/uploadrc", upload.single("image"), async (req, res, next) => {
             await instance.methods
               .add_rc(
                 file[0].hash,
-                req.body.email,
+                '1S',
                 j.Validity,
                 j.registration_date,
                 j.chasis_number,
@@ -152,7 +152,7 @@ router.post("/uploadpuc", upload.single("image"), (req, res, next) => {
           console.log(accounts[0]);
           try {
             await instance.methods
-              .add_puc(file[0].hash, req.body.email, j.Validity)
+              .add_puc(file[0].hash,'1', j.Validity)
               .send({ from: accounts[0], gas: 300000 });
             const response = await instance.methods.getId().call();
             console.log(response);
@@ -215,7 +215,7 @@ router.post("/uploadinsurance", upload.single("image"), (req, res, next) => {
           console.log(accounts[0]);
           try {
             await instance.methods
-              .add_insurance(file[0].hash, req.body.email, j.Validity)
+              .add_insurance(file[0].hash, '1', j.Validity)
               .send({ from: accounts[0], gas: 300000 });
             const response = await instance.methods.getId().call();
             console.log(response);

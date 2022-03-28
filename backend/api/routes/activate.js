@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
   } else {
     return res.status(200).json({
       message: "QR-Code Activated",
-      link: "http://localhost:5000/view/" + accounts[0],
+      link: "http://localhost:5000/view/"+accounts[0],
     });
   }
 });

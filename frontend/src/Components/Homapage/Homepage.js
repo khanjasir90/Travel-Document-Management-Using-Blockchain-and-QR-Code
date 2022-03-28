@@ -40,13 +40,12 @@ const Homepage = () => {
               <div class='flex rounded-lg h-full bg-gray-100 p-8 flex-col'>
                 <div class='flex items-center mb-3'>
                   <h2 class='text-gray-900 text-lg title-font font-medium'>
-                    Feature 1
+                    Decentralization
                   </h2>
                 </div>
                 <div class='flex-grow'>
                   <p class='leading-relaxed text-base'>
-                    Blue bottle crucifix vinyl post-ironic four dollar toast
-                    vegan taxidermy. Gastropub indxgo juice poutine.
+                    All of the document are stored on a decentralized peer to peer network, allowing users to access them at any time
                   </p>
                 </div>
               </div>
@@ -55,13 +54,12 @@ const Homepage = () => {
               <div class='flex rounded-lg h-full bg-gray-100 p-8 flex-col'>
                 <div class='flex items-center mb-3'>
                   <h2 class='text-gray-900 text-lg title-font font-medium'>
-                    Feature 2
+                    QR Code
                   </h2>
                 </div>
                 <div class='flex-grow'>
                   <p class='leading-relaxed text-base'>
-                    Blue bottle crucifix vinyl post-ironic four dollar toast
-                    vegan taxidermy. Gastropub indxgo juice poutine.
+                    A QR Code based technique that can easily be read by the concerned authorities to acquire information on the vehicle instead of physically having your documents verified within no time
                   </p>
                 </div>
               </div>
@@ -70,13 +68,12 @@ const Homepage = () => {
               <div class='flex rounded-lg h-full bg-gray-100 p-8 flex-col'>
                 <div class='flex items-center mb-3'>
                   <h2 class='text-gray-900 text-lg title-font font-medium'>
-                    Feature 3
+                    Security and Privacy
                   </h2>
                 </div>
                 <div class='flex-grow'>
                   <p class='leading-relaxed text-base'>
-                    Blue bottle crucifix vinyl post-ironic four dollar toast
-                    vegan taxidermy. Gastropub indxgo juice poutine.
+                    All of the papers are hash and kept on the blockchain. As a result, document tampering and misuse are not possible.
                   </p>
                 </div>
               </div>

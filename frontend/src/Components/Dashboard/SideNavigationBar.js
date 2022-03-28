@@ -3,7 +3,8 @@ import { Container } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 // import { Fabars } from "react-icons/fa";
 
-const SideNavigationBar = () => {
+const SideNavigationBar = ({info}) => {
+    const navigate = useNavigate();
     const [customWidth, setCustomWidth] = useState(false);
 
     const closeNav = () => {
@@ -13,8 +14,6 @@ const SideNavigationBar = () => {
     const openNav = () => {
         setCustomWidth(true)
     }
-
-    const navigate = useNavigate();
     const handleLogout = () => {
       localStorage.removeItem('userData');
       navigate('/');
@@ -23,8 +22,7 @@ const SideNavigationBar = () => {
         <>
             <div className='side__nav'>
                 <Container>
-                    <p className='side_navigation_bar__link'>Hello NAME</p>
-                    <p className='side_navigation_bar__link'>Account ID</p>
+                    <p className='side_navigation_bar__link'>Hello {info.name}</p>
                     <p className='side_navigation_bar__link'>Logout</p>
                 </Container>
             </div>

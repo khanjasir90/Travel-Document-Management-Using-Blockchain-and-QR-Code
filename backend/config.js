@@ -1,448 +1,448 @@
-const CONTACT_ADDRESS = "0x2f97BF0bC41Fc2845fE62c08f9f3121ce74224bA";
+const CONTACT_ADDRESS = "0x4Bd7b16A3764BA9503a2962826cec2715f2fbE02";
 
 const CONTACT_ABI = [
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "bool",
-        name: "status",
-        type: "bool",
-      },
+        "indexed": false,
+        "internalType": "bool",
+        "name": "status",
+        "type": "bool"
+      }
     ],
-    name: "dladded",
-    type: "event",
+    "name": "dladded",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "bool",
-        name: "status",
-        type: "bool",
-      },
+        "indexed": false,
+        "internalType": "bool",
+        "name": "status",
+        "type": "bool"
+      }
     ],
-    name: "insuranceadded",
-    type: "event",
+    "name": "insuranceadded",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "bool",
-        name: "status",
-        type: "bool",
-      },
+        "indexed": false,
+        "internalType": "bool",
+        "name": "status",
+        "type": "bool"
+      }
     ],
-    name: "pucadded",
-    type: "event",
+    "name": "pucadded",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "bool",
-        name: "status",
-        type: "bool",
-      },
+        "indexed": false,
+        "internalType": "bool",
+        "name": "status",
+        "type": "bool"
+      }
     ],
-    name: "rcadded",
-    type: "event",
+    "name": "rcadded",
+    "type": "event"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: "verified",
-    outputs: [
+    "name": "verified",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "name",
-        type: "string",
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "dob",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "dob",
+        "type": "string"
+      }
     ],
-    name: "registerUser",
-    outputs: [
+    "name": "registerUser",
+    "outputs": [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: "testcontract",
-    outputs: [
+    "inputs": [],
+    "name": "testcontract",
+    "outputs": [
       {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
     ],
-    stateMutability: "pure",
-    type: "function",
-    constant: true,
+    "stateMutability": "pure",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [],
-    name: "getId",
-    outputs: [
+    "inputs": [],
+    "name": "getId",
+    "outputs": [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "_dochash",
-        type: "string",
+        "internalType": "string",
+        "name": "_dochash",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_id",
-        type: "string",
+        "internalType": "string",
+        "name": "_id",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_validity",
-        type: "string",
+        "internalType": "string",
+        "name": "_validity",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_regDate",
-        type: "string",
+        "internalType": "string",
+        "name": "_regDate",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_chassisNo",
-        type: "string",
+        "internalType": "string",
+        "name": "_chassisNo",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_engineNo",
-        type: "string",
+        "internalType": "string",
+        "name": "_engineNo",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_model",
-        type: "string",
+        "internalType": "string",
+        "name": "_model",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_seat",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "_seat",
+        "type": "string"
+      }
     ],
-    name: "add_rc",
-    outputs: [
+    "name": "add_rc",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "ok",
-        type: "bool",
-      },
+        "internalType": "bool",
+        "name": "ok",
+        "type": "bool"
+      }
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "_dochash",
-        type: "string",
+        "internalType": "string",
+        "name": "_dochash",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_id",
-        type: "string",
+        "internalType": "string",
+        "name": "_id",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_validity",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "_validity",
+        "type": "string"
+      }
     ],
-    name: "add_driving",
-    outputs: [
+    "name": "add_driving",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "ok",
-        type: "bool",
-      },
+        "internalType": "bool",
+        "name": "ok",
+        "type": "bool"
+      }
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "_dochash",
-        type: "string",
+        "internalType": "string",
+        "name": "_dochash",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_id",
-        type: "string",
+        "internalType": "string",
+        "name": "_id",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_validity",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "_validity",
+        "type": "string"
+      }
     ],
-    name: "add_puc",
-    outputs: [
+    "name": "add_puc",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "ok",
-        type: "bool",
-      },
+        "internalType": "bool",
+        "name": "ok",
+        "type": "bool"
+      }
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "_dochash",
-        type: "string",
+        "internalType": "string",
+        "name": "_dochash",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_id",
-        type: "string",
+        "internalType": "string",
+        "name": "_id",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_validity",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "_validity",
+        "type": "string"
+      }
     ],
-    name: "add_insurance",
-    outputs: [
+    "name": "add_insurance",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "ok",
-        type: "bool",
-      },
+        "internalType": "bool",
+        "name": "ok",
+        "type": "bool"
+      }
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: "setVerified",
-    outputs: [
+    "inputs": [],
+    "name": "setVerified",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "ok",
-        type: "bool",
-      },
+        "internalType": "bool",
+        "name": "ok",
+        "type": "bool"
+      }
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: "verify",
-    outputs: [
+    "inputs": [],
+    "name": "verify",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "ok",
-        type: "bool",
-      },
+        "internalType": "bool",
+        "name": "ok",
+        "type": "bool"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
     ],
-    name: "get_user_details",
-    outputs: [
+    "name": "get_user_details",
+    "outputs": [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
     ],
-    name: "get_rc_details",
-    outputs: [
+    "name": "get_rc_details",
+    "outputs": [
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
     ],
-    name: "get_puc_details",
-    outputs: [
+    "name": "get_puc_details",
+    "outputs": [
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
     ],
-    name: "get_insurance_details",
-    outputs: [
+    "name": "get_insurance_details",
+    "outputs": [
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
     ],
-    name: "get_dl_details",
-    outputs: [
+    "name": "get_dl_details",
+    "outputs": [
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
-  },
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  }
 ];
 
 module.exports = {

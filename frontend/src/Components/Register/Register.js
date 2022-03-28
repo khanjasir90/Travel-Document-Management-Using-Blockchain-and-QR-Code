@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 import './Register.css';
-import RegisterImg from "../../assets/images/register.svg";
-import LoginImg from "../../assets/images/login.svg";
-import { axiosInstance } from '../../AxiosSetup';
-import axios from 'axios';
+// import RegisterImg from "../../assets/images/register.svg";
+// import LoginImg from "../../assets/images/login.svg";
+// import { axiosInstance } from '../../AxiosSetup';
+// import axios from 'axios';
 
 const RegisterScreen = () => {
   const navigate = useNavigate();
@@ -83,7 +83,7 @@ const RegisterScreen = () => {
   return (
     <div className='login-screen'>
       <div className='imgBx'>
-      <img src={RegisterImg} alt="loginimage" className='Login_image'/>
+      {/* <img src={RegisterImg} alt="loginimage" className='Login_image'/> */}
       </div>
       <div className='contentBx'>
         <div className='formBx'>

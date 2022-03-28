@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { Alert } from 'react-bootstrap';
 import "./Login.css";
-import LoginImg from "../../assets/images/login.svg";
+// import LoginImg from "../../assets/images/login.svg";
 
 const LoginScreen = () => {
     const navigate = useNavigate();
@@ -57,7 +57,7 @@ const LoginScreen = () => {
 
         <div className="login-screen">
             <div className="imgBx">
-                <img src={LoginImg} alt="loginimage" className='Login_image' />
+                {/* <img src={LoginImg} alt="loginimage" className='Login_image' /> */}
             </div>
             <div className="contentBx">
                 <div className="formBx">

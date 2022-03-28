@@ -12,7 +12,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -25,7 +26,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -50,7 +52,7 @@
   "sourceMap": "66:352:0:-:0;;;113:10;90:33;;;;;;;;;;;;;;;;;;;;66:352;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "66:352:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;127:36;;;:::i;:::-;;;;;;;;;;;;;;;;;;;90:33;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;313:103;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;127:36;;;;:::o;90:33::-;;;;;;;;;;;;:::o;313:103::-;225:5;;;;;;;;;;211:19;;:10;:19;;;196:101;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;402:9:::1;375:24;:36;;;;313:103:::0;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract Migrations {\n  address public owner = msg.sender;\n  uint public last_completed_migration;\n\n  modifier restricted() {\n    require(\n      msg.sender == owner,\n      \"This function is restricted to the contract's owner\"\n    );\n    _;\n  }\n\n  function setCompleted(uint completed) public restricted {\n    last_completed_migration = completed;\n  }\n}\n",
-  "sourcePath": "H:\\Ata\\SIH\\SIH-2022\\backend\\contracts\\Migrations.sol",
+  "sourcePath": "C:\\Users\\Nikshita\\Documents\\SIH\\SIH-3\\SIH-2022\\backend\\contracts\\Migrations.sol",
   "ast": {
     "absolutePath": "project:/contracts/Migrations.sol",
     "exportedSymbols": {
@@ -889,12 +891,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xEE2238D1Be1E4a1D0D35C186AE15DEb260e82aD6",
-      "transactionHash": "0xd4fde827c4b31eb20f59de0a42013302e371b36e3ab590122cea4866b76e602b"
+      "address": "0x7B092490D29A063af048780Cce8E069aD70CA0F0",
+      "transactionHash": "0xd525362543941c511280c5f08d3f59f3fb80c451afb1c195ee04ef3cf5ccd55d"
     }
   },
   "schemaVersion": "3.4.6",
-  "updatedAt": "2022-03-24T00:56:09.594Z",
+  "updatedAt": "2022-03-24T07:17:05.306Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

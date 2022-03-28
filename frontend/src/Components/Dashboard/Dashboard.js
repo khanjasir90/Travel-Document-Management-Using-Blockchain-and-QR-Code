@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import SideNavigationBar from './SideNavigationBar';
 import './Dashboard.css';
 import QRCodeGenerator from './QRCodeGenerator/QRCodeGenerator';
-import {Form, Col } from 'react-bootstrap';
+import { Form, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import {axiosInstance} from '../../AxiosSetup'
 
 import './Dashboard.css';
 
@@ -17,37 +18,39 @@ const Sidebar = () => {
   const [registrationFile, setRegistrationFile] = useState({});
   const [qrLink, setqrLink] = useState("");
   const [info, setInfo] = useState({});
+  const [message, setMessage] = useState("");
+  const [count, setCount] = useState(0);
 
   const getUserResponse = async () => {
     let response = await fetch(`http://localhost:5000/dashboard/${localStorage.getItem("email")}`, {
-      method:"GET",
+      method: "GET",
       headers: {
         "Content-Type": "application/json"
       }
     });
-    console.log(response);
-    setInfo({...response});
+    const res = await response.json();
+    if(res) setInfo(res); 
+    console.log(res)
+    setInfo(res);
+    console.log(info);
   }
 
   useEffect(() => {
     getUserResponse()
-  });
+  },[]);
 
   const insuranceHandler = async () => {
     const data = new FormData();
     data.append("image", insurancefile);
 
     try {
-      let response = await fetch("http://localhost:5000/upload/uploadinsurance", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      
+      let response = await axiosInstance.post("/upload/uploadinsurance", data );
+      setMessage("Insurance has been uploaded successfully!!");
+      setCount(count+1);
+      setError("");
+
     } catch (error) {
-      setError(`There was some error !! Please try again`)
+      setMessage("PUC has been uploaded successfully!!");
       setTimeout(() => {
         setError("");
       }, 7000);
@@ -60,16 +63,13 @@ const Sidebar = () => {
     data.append("image", pucFile);
 
     try {
-      let response = await fetch("http://localhost:5000/upload/uploadpuc", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      
+      let response = await axiosInstance.post("/upload/uploadpuc", data );
+      setMessage("PUC has been uploaded successfully!!");
+      setCount(count+1);
+      setError("");
+
     } catch (error) {
-      setError(`There was some error !! Please try again`)
+      setMessage("PUC has been uploaded successfully!!");
       setTimeout(() => {
         setError("");
       }, 7000);
@@ -80,26 +80,48 @@ const Sidebar = () => {
   const registrationHandler = async () => {
     const data = new FormData();
     data.append("image", registrationFile);
+    // data.append("email", localStorage.getItem("email"));
 
     try {
-      let response = await fetch("http://localhost:5000/upload/uploadrc", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      
+      let response = await axiosInstance.post("/upload/uploadrc", data );
+      console.log(response);
+      setMessage("RC has been uploaded successfully!!");
+      setCount(count+1);
+      setError("");
+
     } catch (error) {
-      setError(`There was some error !! Please try again`)
+      setMessage("PUC has been uploaded successfully!!");
+      setMessage("");
       setTimeout(() => {
         setError("");
       }, 7000);
       console.log(error)
     }
+
+    // try {
+    //   let response = await fetch("http://localhost:5000/upload/uploadrc", {
+    //     method: "POST",
+    //     body: data,
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     }
+    //   });
+
+    // } catch (error) {
+    //   setError(`There was some error !! Please try again`)
+    //   setTimeout(() => {
+    //     setError("");
+    //   }, 7000);
+    //   console.log(error)
+    // }
   }
 
   const activateHandler = async (e) => {
+    // if(count<3){
+    //   setError("All the three files must be uploaded!!");
+    //   return
+    // }
+    e.preventDefault();
     try {
       let response = await fetch("http://localhost:5000/activate", {
         method: "GET",
@@ -107,8 +129,9 @@ const Sidebar = () => {
           "Content-Type": "application/json"
         }
       });
-      console.log(response);
-      setqrLink(response);
+      const res = await response.json();
+      console.log(res.message);
+      setqrLink(res);
 
     } catch (error) {
       setError(`There was some error !! Please try again`)
@@ -119,19 +142,19 @@ const Sidebar = () => {
     }
   }
 
-  
+
 
   return (
     <>
       <div className='main'>
-        <SideNavigationBar />
+        <SideNavigationBar info={info} />
 
         <div className='container '>
           <div className='row flex_class_one'>
             <div className='col section_one'>
               <div class='p-4'>
                 <div class='border border-gray-100 p-6 rounded-lg shadow-md bg-white'>
-                  {qrLink && <QRCodeGenerator link={qrLink}/>}
+                  {qrLink && <QRCodeGenerator link={qrLink} />}
                   <QRCodeGenerator />
                 </div>
               </div>
@@ -140,16 +163,16 @@ const Sidebar = () => {
               <div class='p-4 '>
                 <div class='border border-gray-100 p-6 rounded-lg min-h-full shadow-md sub_section_one bg-white'>
                   <h2 class='text-lg text-gray-900 font-medium title-font mb-5'>
-                    Name: Khushbu Parmar
+                    Name: {info.name}
                   </h2>
                   <h2 class='text-lg text-gray-900 font-medium title-font mb-5'>
-                    Date Of Birth: 25-01-2001
+                    Date Of Birth: {info.dob}
                   </h2>
                   <h2 class='text-lg text-gray-900 font-medium title-font mb-5 '>
-                    Aadhaar Number: 1234 5678 9101
+                    Aadhaar Number: {info.aadharcard}
                   </h2>
                   <h2 class='text-lg text-gray-900 font-medium title-font mb-5 '>
-                    Email ID: khushbu@xyz.com
+                    Email ID: {info.email}
                   </h2>
                   <h2 class='text-lg text-gray-900 font-medium title-font mb-5 '>
                     Phone Number: 9864723990
@@ -160,6 +183,8 @@ const Sidebar = () => {
           </div>
           <Form>
             <section class='text-gray-600 body-font'>
+              {message!=="" && <p style={{color:"green", fontStyle:"italic", fontWeight:"600", fontSize:"1rem"}}>{message}</p>}
+              {error!=="" && <p style={{color:"red", fontStyle:"italic", fontWeight:"600", fontSize:"1rem"}}>{error}</p>}
               <div class='container px-5 mx-auto'>
                 <div class='flex flex-wrap -m-4'>
                   <div class='p-4 lg:w-1/3'>
@@ -212,7 +237,7 @@ const Sidebar = () => {
               </div>
             </section>
             <div class="p-2 w-full">
-              <button onClick={activateHandler} class="flex mx-auto mt-10 text-white border-0 py-2 px-8 focus:outline-none text-lg dashborad_activate_btn">Activate</button>
+              <button onClick={e => activateHandler(e)} class="flex mx-auto mt-10 text-white border-0 py-2 px-8 focus:outline-none text-lg dashborad_activate_btn">Activate</button>
             </div>
           </Form>
         </div>

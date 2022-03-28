@@ -15,7 +15,10 @@
 }
 .side_navigation_bar__link{
   width: 100%;
-  padding: 0 12px 8px 12px;
+  padding: 20px 12px 8px 12px;
+  -webkit-box-shadow: 0 7px 6px -6px black;
+     -moz-box-shadow: 0 7px 6px -6px black;
+          box-shadow: 0 7px 6px -6px black;
 }
 .side__nav__small{
   display: none;
