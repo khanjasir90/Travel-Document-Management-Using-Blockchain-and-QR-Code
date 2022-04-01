@@ -4,6 +4,9 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 Tesseract=require('tesseract.js');
+const ipfsAPI = require('ipfs-api');
+const ipfs = ipfsAPI("ipfs.infura.io", "5001", { protocol: "https" });
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads/");
@@ -39,8 +42,7 @@ router.post("/uploadrc", upload.single("image"),async (req, res, next) => {
       console.log("renamed");
     }
   );
-
-
+  
   t=[]
   a=[]
   j={}
@@ -65,7 +67,14 @@ Tesseract.recognize(
         
     }
     console.log(j)
-    return res.status(200).json({"rc-details":j})
+    const testfile = fs.readFileSync("./uploads/"+req.body.email + "-rc.png");
+    let testBuffer = new Buffer(testfile);
+    ipfs.files.add(testBuffer,(err,file) => {
+      if(err) console.log(err);
+      else console.log(file[0].hash)
+    });
+    
+    // return res.status(200).json({"rc-details":j})
   }).catch(err => {
     console.log(err);
     return res.status(500).json({"error":err})

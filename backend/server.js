@@ -19,7 +19,7 @@ const contract = new Contract();
 const provider = new Provider();
 const web3 = provider.web3;
 const instance = contract.initContract();
-//const ipfs = ipfsAPI('ipfs.infura.io', '5001', {protocol: 'https'})
+// const ipfs = ipfsAPI("ipfs.infura.io", "5001", { protocol: "https" });
 
 const userRoute = require("./api/routes/auth");
 const uploadRoute = require("./api/routes/upload");
