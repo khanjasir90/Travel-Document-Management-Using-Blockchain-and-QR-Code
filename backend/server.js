@@ -23,6 +23,9 @@ const instance = contract.initContract();
 
 const userRoute = require("./api/routes/auth");
 const uploadRoute = require("./api/routes/upload");
+const activateRoute = require("./api/routes/activate");
+const viewRoute = require("./api/routes/view");
+const dashboardRoute = require("./api/routes/dashboard");
 
 const mongoose = require("mongoose");
 
@@ -48,6 +51,9 @@ app.use(express.json());
 
 app.use("/user", userRoute);
 app.use("/upload", uploadRoute);
+app.use("/activate", activateRoute);
+app.use("/view", viewRoute);
+app.use("/dashboard", dashboardRoute);
 
 app.get("/test", async (req, res) => {
   const accounts = await web3.eth.getAccounts();

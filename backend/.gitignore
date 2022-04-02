@@ -1,6 +1,6 @@
 node_modules
 contracts
-build
+build/contracts
 migrations
 test
 truffle-config.js

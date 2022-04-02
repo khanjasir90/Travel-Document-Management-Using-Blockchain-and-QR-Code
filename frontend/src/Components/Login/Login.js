@@ -1,40 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Alert } from 'react-bootstrap';
 import "./Login.css";
-import LoginImg from "../../assets/images/login.svg";
-import { axiosInstance } from '../../AxiosInstance';
+// import LoginImg from "../../assets/images/login.svg";
 
-const LoginScreen = ({ history }) => {
+const LoginScreen = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
+
     useEffect(() => {
-        if (localStorage.getItem("authToken")) {
-            history.push("/")
+        function checkUserData() {
+          const item = localStorage.getItem('authToken')
+      
+          if (item) {
+            navigate("/dashboard");
+          }
         }
-    }, [history]);
+      
+        window.addEventListener('storage', checkUserData)
+      
+        return () => {
+          window.removeEventListener('storage', checkUserData)
+        }
+      }, [])
 
     const LoginHandler = async (e) => {
         e.preventDefault();
-
-        const config = {
-            header: {
-                "Content-Type": "application/json"
-            }
-        }
-
-
+        const info = { email: email, password: password };
         try {
-            const {data} = await axiosInstance.post("/api/auth/login", { email, password}, config);
-            console.log(data)
-            localStorage.setItem("id", data.id);
-            localStorage.setItem("authToken", data.token);
-
-            history.push("/")
+            let response = await fetch("http://localhost:5000/user/login", {
+                method: "POST",
+                body: JSON.stringify(info),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            const json = await response.json();
+            console.log(json);
+            localStorage.setItem("authToken", json.token);
+            localStorage.setItem("email", email);
+            navigate("/dashboard");
 
         } catch (error) {
+            console.log(error)
             setError(`Email or password is incorrect`)
             setTimeout(() => {
                 setError("")
@@ -46,7 +57,7 @@ const LoginScreen = ({ history }) => {
 
         <div className="login-screen">
             <div className="imgBx">
-                <img src={LoginImg} alt="loginimage" className='Login_image' />
+                {/* <img src={LoginImg} alt="loginimage" className='Login_image' /> */}
             </div>
             <div className="contentBx">
                 <div className="formBx">
