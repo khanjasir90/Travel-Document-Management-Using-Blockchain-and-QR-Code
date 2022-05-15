@@ -16,25 +16,22 @@ One cannot just drive just because one knows driving. You need all the documents
 <code>https://github.com/khanjasir90/SIH-2022.git</code><br>
 
 <h2>Run the following commands to download all the dependencies</h2>
-<code>
-    cd backend <br>
-    npm i <br>
-    cd.. <br>
-    cd frontend <br>
-    npm i <br>
-    cd.. <br>
-</code>
+<code>cd backend </code><br>
+<code> npm i </code><br>
+<code> cd.. </code><br>
+<code> cd frontend </code><br>
+<code> npm i </code><br>
+<code> cd.. </code><br>
 
 <h2>Command to run the project</h2>
 <pre>open terminal and type (To run Frontend server)</pre>
-<code>cd frontend <br> npm start</code><br><br>
+<code>cd frontend </code><br>
+<code>npm start</code><br><br>
 
 <h2>Command to run the project</h2>
 <pre>open terminal and type (To run Backend server)</pre>
-<code>cd backend <br> npm start</code><br><br>
-
-
-
+<code>cd backend </code><br> 
+<code>npm start</code><br><br>
 
 
 <h2>Project snapshot</h2>
