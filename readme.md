@@ -46,17 +46,17 @@ One cannot just drive just because one knows driving. You need all the documents
 
 <h4>Register</h4>
 <div>
-<img src="https://github.com/khanjasir90/SIH-2022/blob/main/screenshot/register.JPG" width = 80% height= 70%><br>
+<img src="https://github.com/khanjasir90/SIH-2022/blob/master/screenshot/register.JPG" width = 80% height= 70%><br>
 </div><br>
 
 <h4>Login</h4>
 <div>
-<img src="https://github.com/khanjasir90/SIH-2022/blob/main/screenshot/login.JPG" width = 80% height= 70%><br>
+<img src="https://github.com/khanjasir90/SIH-2022/blob/master/screenshot/login.JPG" width = 80% height= 70%><br>
 </div><br>
 
 <h4>Dashboard Page</h4>
 <div>
-<img src="https://github.com/khanjasir90/SIH-2022/blob/main/screenshot/dashboard.JPG" width = 80% height= 70%><br>
+<img src="https://github.com/khanjasir90/SIH-2022/blob/master/screenshot/dashboard.JPG" width = 80% height= 70%><br>
 </div><br>
 
 
