@@ -23,6 +23,10 @@ One cannot just drive just because one knows driving. You need all the documents
 <code> npm i </code><br>
 <code> cd.. </code><br>
 
+<h2>Server Info</h2>
+<code>Backend server is running on 5000</code><br>
+<code>Frontend server is running on 3000</code><br>
+
 <h2>Command to run the project</h2>
 <pre>open terminal and type (To run Frontend server)</pre>
 <code>cd frontend </code><br>
