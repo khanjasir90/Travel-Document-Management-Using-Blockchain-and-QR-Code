@@ -1,9 +1,9 @@
 .dashboard_qrcode{
     margin: auto;
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
 }
 .qrcode_text{
     margin: 20px auto 0 auto;
-    width: 170px;
+    width: 150px;
 }
