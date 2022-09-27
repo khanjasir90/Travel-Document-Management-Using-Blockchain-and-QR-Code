@@ -64,6 +64,7 @@ One cannot just drive just because one knows driving. You need all the documents
 <h2>Authors</h2>
 <blockquote>
   Mohd Jasir Khan<br>
+  Abdullah Pathan <br>
   Rayyan Mulla <br>
   Nikshita Shetty <br>
   Aataurrehman Shaikh <br>
