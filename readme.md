@@ -6,7 +6,12 @@ One cannot just drive just because one knows driving. You need all the documents
 <p>These instructions will get you a copy of the project up and running on your local machine for development .</p>
 
 <h2>Prerequisites</h2>
-<code>npm , ganache and truffle </code>
+<code>npm , ganache and truffle </code><br>
+<code>pragma solidity ^0.8.0</code><br>
+<code>Frontend: ReactJS</code><br>
+<code>Backend: NodeJS</code><br>
+<code>Database: MongoDB, IPFS</code><br>
+
 
 <h2>Installing</h2>
 <pre>open terminal and type</pre>
