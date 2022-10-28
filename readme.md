@@ -6,7 +6,12 @@ One cannot just drive just because one knows driving. You need all the documents
 <p>These instructions will get you a copy of the project up and running on your local machine for development .</p>
 
 <h2>Prerequisites</h2>
-<code>npm , ganache and truffle </code>
+<code>npm , ganache and truffle </code><br>
+<code>pragma solidity ^0.8.0</code><br>
+<code>Frontend: ReactJS</code><br>
+<code>Backend: NodeJS</code><br>
+<code>Database: MongoDB, IPFS</code><br>
+
 
 <h2>Installing</h2>
 <pre>open terminal and type</pre>
@@ -15,7 +20,7 @@ One cannot just drive just because one knows driving. You need all the documents
 <h4>or simply download using the url below</h4>
 <code>https://github.com/khanjasir90/SIH-2022.git</code><br>
 
-<h2>Run the following commands to download all the dependencies</h2>
+<h2> Run the following commands to download all the dependencies</h2>
 <code>cd backend </code><br>
 <code> npm i </code><br>
 <code> cd.. </code><br>
