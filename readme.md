@@ -67,7 +67,7 @@ One cannot just drive just because one knows driving. You need all the documents
   Abdullah Pathan <br>
   Rayyan Mulla <br>
   Nikshita Shetty <br>
-  Aataurrehman Shaikh <br>
+  Ataurrehman Shaikh <br>
   Khushbhu Parmar <br>
   Swanand Aapte <br>
 </blockquote>
