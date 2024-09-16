@@ -42,7 +42,7 @@ mongoose.connect(
 
 app.use(cors());
 const corsOptions = {
-  origin: "*", //access-control-allow-credentials:true
+  origin: "3000", //access-control-allow-credentials:false
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
